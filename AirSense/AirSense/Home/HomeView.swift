@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var homevm = HomeViewModel(airData: AirDataTEMP.example)
+    @StateObject var homevm = HomeViewModel()
     var body: some View {
         ZStack {
             HomeDetailSubview(vm: homevm)
@@ -27,7 +27,7 @@ struct HomeView: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(getbackgroundColor(airData: airData))
+                            .foregroundColor(homevm.getbackgroundColor(airData: airData))
                         HStack {
                             //flag
                             
@@ -52,11 +52,14 @@ struct HomeDetailSubview: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                vm.backgroundColor.ignoresSafeArea()
+                vm.getbackgroundColor(airData: vm.airData)
+                    .ignoresSafeArea()
                 VStack{
                     HStack {
-                        NavigationLink {
-                            SearchView()
+//                        NavigationLink {
+//                            SearchView()
+                        Button {
+                            vm.getAirData()
                         } label: {
                             Image(systemName: "magnifyingglass.circle.fill")
                                 .font(.system(size: 35))
@@ -64,12 +67,12 @@ struct HomeDetailSubview: View {
                         .padding(.leading, 30)
                         .padding(.trailing, 85)
                         VStack {
-                            Text(vm.airData.city)
+                            Text(vm.airData.city ?? "")
                                 .font(.title2)
                                 .fontWeight(.semibold)
                             HStack {
-                                Text(vm.airData.country)
-                                Text(vm.airData.state)
+                                Text(vm.airData.country ?? "")
+                                Text(vm.airData.state ?? "")
                             }
                         }
                         Spacer()
@@ -81,7 +84,7 @@ struct HomeDetailSubview: View {
                         VStack {
                             Text("AQI")
                                 .font(.title2)
-                            Text("\(vm.airData.aqius)")
+                            Text("\(Int(vm.airData.current.pollution.aqius))")
                                 .fontWeight(.bold)
                                 .font(.system(size: 75))
                             
@@ -99,7 +102,7 @@ struct HomeDetailSubview: View {
                                 Text("Details")
                                     .font(.title3)
                                     .fontWeight(.medium)
-                                    .foregroundColor(vm.backgroundColor)
+                                    .foregroundColor(vm.getbackgroundColor(airData: vm.airData))
                             }
                         }
                         .padding(.leading, 30)
@@ -115,7 +118,7 @@ struct HomeDetailSubview: View {
                                 Text("Forecast")
                                     .font(.title3)
                                     .fontWeight(.medium)
-                                    .foregroundColor(vm.backgroundColor)
+                                    .foregroundColor(vm.getbackgroundColor(airData: vm.airData))
                             }
                         }
                         .padding(.trailing, 30)
@@ -138,23 +141,6 @@ struct HomeDetailSubview: View {
     }
 }
 
-extension HomeView {
-    func getbackgroundColor(airData: AirData) -> Color {
-        if airData.current.pollution.aqius <= 50 {
-            return Color("GoodAQI")
-        } else if airData.current.pollution.aqius <= 100 {
-            return Color("ModerateAQI")
-        } else if airData.current.pollution.aqius <= 150 {
-            return Color("SlightlyUnhealthyAQI")
-        } else if airData.current.pollution.aqius <= 200 {
-            return Color("UnhealthyAQI")
-        } else if airData.current.pollution.aqius <= 300 {
-            return Color("VeryUnhealthyAQI")
-        } else {
-            return Color("HazardousAQI")
-        }
-    }
-}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

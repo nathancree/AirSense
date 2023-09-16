@@ -13,7 +13,7 @@ struct AirQualityService {
     //api key: f1a55c04-3c86-49be-ac7b-0c6fdce8c093
     
     
-    public func getAirQuality() async throws -> AirData { //need to specify parameters (check api documentation for help)
+    public func getAirQuality() async throws -> AirData {
         print("Fetching air quality")
         
         //make url
@@ -36,7 +36,7 @@ struct AirQualityService {
     }
     
     public func getLatLongAirQuality(lat: Double, lon: Double) async throws -> AirData {
-        print("Fetching air quality")
+        print("Fetching Lat/Long air quality")
         
         //make url
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")

@@ -29,32 +29,12 @@ class HomeViewModel: ObservableObject {
 //        self.adata = adata
     }
     
-#warning("change from TEMP")
-    @Published var airData: AirDataTEMP
-    @Published var backgroundColor: Color
-    @Published var airQualityMessage: String
-#warning("change from TEMP")
-    init(airData: AirDataTEMP) {
-        self.airData = airData
-        if airData.aqius <= 50 {
-            self.backgroundColor = Color("GoodAQI")
-            self.airQualityMessage = "GOOD"
-        } else if airData.aqius <= 100 {
-            self.backgroundColor = Color("ModerateAQI")
-            self.airQualityMessage = "MODERATE"
-        } else if airData.aqius <= 150 {
-            self.backgroundColor = Color("SlightlyUnhealthyAQI")
-            self.airQualityMessage = "SLIGHTLY UNHEALTHY"
-        } else if airData.aqius <= 200 {
-            self.backgroundColor = Color("UnhealthyAQI")
-            self.airQualityMessage = "UNHEALTHY"
-        } else if airData.aqius <= 300 {
-            self.backgroundColor = Color("VeryUnhealthyAQI")
-            self.airQualityMessage = "VERY UNHEALTHY"
-        } else {
-            self.backgroundColor = Color("HazardousAQI")
-            self.airQualityMessage = "HAZARDOUS"
-        }
+    @Published var airData: AirData = AirData.inital
+//    @Published var backgroundColor: Color
+//    @Published var airQualityMessage: String
+
+    init() {
+        getAirData()
         
         print("Called favAirData default init")
         if let saved = defaults.data(forKey: "favAirData") {
@@ -77,6 +57,40 @@ extension HomeViewModel {
             } catch {
                 print("\(error)")
             }
+        }
+    }
+}
+
+extension HomeViewModel {
+    func getbackgroundColor(airData: AirData) -> Color {
+        if airData.current.pollution.aqius <= 50 {
+            return Color("GoodAQI")
+        } else if airData.current.pollution.aqius <= 100 {
+            return Color("ModerateAQI")
+        } else if airData.current.pollution.aqius <= 150 {
+            return Color("SlightlyUnhealthyAQI")
+        } else if airData.current.pollution.aqius <= 200 {
+            return Color("UnhealthyAQI")
+        } else if airData.current.pollution.aqius <= 300 {
+            return Color("VeryUnhealthyAQI")
+        } else {
+            return Color("HazardousAQI")
+        }
+    }
+    
+    func getAirQualityMessage(airData: AirData) -> String {
+        if airData.current.pollution.aqius <= 50 {
+            return "GOOD"
+        } else if airData.current.pollution.aqius <= 100 {
+            return "MODERATE"
+        } else if airData.current.pollution.aqius <= 150 {
+            return "SLIGHTLY UNHEALTHY"
+        } else if airData.current.pollution.aqius <= 200 {
+            return "UNHEALTHY"
+        } else if airData.current.pollution.aqius <= 300 {
+            return "VERY UNHEALTHY"
+        } else {
+            return "HAZARDOUS"
         }
     }
 }

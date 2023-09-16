@@ -42,9 +42,9 @@ struct Current: Codable {
 struct Pollution: Codable {
     let ts: String
     let aqius: Double
-    let mainus: Main
-    let aqicn: Double
-    let maincn: Main
+    let mainus: Main?
+    let aqicn: Double?
+    let maincn: Main?
     let p2: Co?
     let p1: Co?
     let n2, s2, co: Co?
@@ -101,4 +101,8 @@ extension AirData {
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }
+}
+
+extension AirData {
+    static var inital: AirData = AirData(city: "", state: "", country: "", location: nil, forecasts: nil, current: Current(weather: Weather(ts: "2017-02-01T01:00:00.000Z", tp: 12, pr: 1020, hu: 100, ws: 3, wd: 313, ic: "10n"), pollution: Pollution(ts: "2017-02-01T01:00:00.000Z", aqius: 21, mainus: nil, aqicn: nil, maincn: nil, p2: nil, p1: nil, n2: nil, s2: nil, co: nil)), history: nil)
 }
