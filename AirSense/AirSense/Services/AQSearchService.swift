@@ -63,7 +63,7 @@ struct AQSearchService {
     
     public func searchCities(country: String, state: String) async throws -> [City] {
         print("search cities called")
-        
+        print("https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         //make url
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         

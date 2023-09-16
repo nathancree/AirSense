@@ -117,12 +117,14 @@ extension SearchViewModel {
             do {
                 let cityData = try await searchService.getCityData(country: country, state: state, city: city)
                 setAirData(airData: try await airDataService.getLatLongAirQuality(lat: cityData.location.coordinates[0], lon: cityData.location.coordinates[1]))
+                print("done getting and setting city data")
             }
         }
     }
     
     func getAirDataFromCityData(country: String, state: String, city: String) -> AirData {
         getCityDetails(country: country, state: state, city: city)
+        print("City Details \(cityAirData)")
         return cityAirData
     }
     

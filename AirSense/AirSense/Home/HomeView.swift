@@ -10,19 +10,25 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var homevm: HomeViewModel
     var body: some View {
-        ZStack {
-            HomeDetailSubview(vm: homevm)
-            Button {
-                print("button clicked")
-                homevm.printFavData()
-            } label: {
-                Text("Click for favData info")
-                    .frame()
-                    .background(.black)
-                    .foregroundColor(.white)
+        NavigationStack {
+            ZStack {
+                HomeDetailSubview(vm: homevm)
+                favoriteList
+                    .padding(.top, 375)
+                    .padding(.horizontal, 50)
+    //            Button {
+    //                print("button clicked")
+    //                homevm.printFavData()
+    //            } label: {
+    //                Text("Click for favData info")
+    //                    .frame()
+    //                    .background(.black)
+    //                    .foregroundColor(.white)
+    //            }
             }
+            .foregroundColor(.white)
         }
-        .foregroundColor(.white)
+        .accentColor(.white)
         
         
     }
@@ -34,18 +40,30 @@ struct HomeView: View {
                     AirDataDetailsView(airDetailsVm: AirDataDetailsViewModel(airData: homevm.airData))
                 } label: {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: 25)
                             .foregroundColor(homevm.getbackgroundColor(airData: airData))
+                            .frame(height: 75)
+                            
                         HStack {
+                            Button {
+                                homevm.removeLocation(airData)
+                            } label: {
+                                Image(systemName: "delete.right.fill")
+                                    .font(.title)
+                            }
+                            .padding(.leading, 15)
+                            
+                            Spacer()
                             //flag
                             
                             Text("\(airData.city ?? ""), ")
                             Text("\(airData.state ?? ""), ")
                             Text("\(airData.country ?? "")")
                             
-                            Text("\(airData.current.pollution.aqius)")
+                            Text("\(Int(airData.current.pollution.aqius))")
                                 .fontWeight(.bold)
                                 .font(.title)
+                                .padding(.trailing, 15)
                         }
                         .foregroundColor(.black)
                     }

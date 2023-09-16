@@ -95,7 +95,7 @@ extension HomeViewModel {
 #warning("review all default state code")
 // adding and removing functions for the data that gets saved
 extension HomeViewModel {
-    func addLocation(_ airData: AirData) {
+    func addLocation(_ airData: AirData) async throws{
         DispatchQueue.main.async {
             self.favAirData.append(airData)
             self.objectWillChange.send()

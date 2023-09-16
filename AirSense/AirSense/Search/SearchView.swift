@@ -187,7 +187,10 @@ struct CitySheetView: View {
             ScrollView(showsIndicators: false) {
                 ForEach(filteredCities) { city in
                     Button {
-                        homevm.addLocation(vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city))
+//                        homevm.addLocation(vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city))
+                        Task {
+                            await fetchAndUpdateCity(city)
+                        }
                         text = ""
                     } label: {
                         ZStack {
@@ -206,6 +209,22 @@ struct CitySheetView: View {
             }
             
             Spacer()
+        }
+    }
+}
+
+extension CitySheetView{
+    @MainActor private func fetchAndUpdateCity(_ city: City) async {
+        let updatedAirData: AirData = vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city)
+        await addToUserDefaults(updatedAirData)
+        
+    }
+    
+    @MainActor private func addToUserDefaults(_ airData: AirData) async {
+        do {
+            try await homevm.addLocation(airData)
+        } catch {
+            print("\(error)")
         }
     }
 }
