@@ -13,6 +13,6 @@ struct AirDataTEMP {
 
 extension AirDataTEMP {
     static var example: AirDataTEMP {
-        AirDataTEMP(city: "Arden", state: "NC", country: "USA", ts: "2017-02-01T01:00:00.000Z", ic: "01n", aquis: 21, tp: 8, pr: 976, hu: 100, ws: 3, wd: 313)
+        AirDataTEMP(city: "Arden", state: "NC", country: "USA", ts: "2017-02-01T01:00:00.000Z", ic: "01n", aquis: 121, tp: 8, pr: 976, hu: 100, ws: 3, wd: 313)
     }
 }
