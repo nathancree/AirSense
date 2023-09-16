@@ -17,7 +17,7 @@ struct AirQualityService {
         print("Fetching air quality")
         
         //make url
-        let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=35.910259&lon=-79.055473&key=f")
+        let urlString = URLComponents(string: "http://api.airvisual.com/v2/nearest_city?key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
         //create query item list
         
@@ -35,7 +35,27 @@ struct AirQualityService {
         return response.data
     }
     
-    
+    public func getLatLongAirQuality(lat: Double, lon: Double) async throws -> AirData {
+        print("Fetching air quality")
+        
+        //make url
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        
+        //create query item list
+        
+        //add query list to existing url
+        guard let url = urlString?.url else { fatalError("Invalid URL") }
+        
+        
+        //begin fetching the data and wait for the response to come back
+        let (data, _) = try await session.data(from: url)
+        
+        //decode name from 'Data' type using our `JSONDecoder`
+        let response = try decoder.decode(Response.self, from: data)
+        
+        //return decoded name
+        return response.data
+    }
     
     
 }

@@ -24,6 +24,7 @@
 		54ACA4F92AB5A14500478B53 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F82AB5A14500478B53 /* Country.swift */; };
 		54ACA4FB2AB5A28E00478B53 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FA2AB5A28E00478B53 /* State.swift */; };
 		54ACA4FD2AB5A3AB00478B53 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FC2AB5A3AB00478B53 /* City.swift */; };
+		54ACA4FF2AB5AA1500478B53 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FE2AB5AA1500478B53 /* CityData.swift */; };
 		54AEB63C2AB40D16000783B9 /* AirSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB63B2AB40D16000783B9 /* AirSenseApp.swift */; };
 		54AEB63E2AB40D16000783B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB63D2AB40D16000783B9 /* ContentView.swift */; };
 		54AEB6402AB40D1A000783B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54AEB63F2AB40D1A000783B9 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		54ACA4F82AB5A14500478B53 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		54ACA4FA2AB5A28E00478B53 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		54ACA4FC2AB5A3AB00478B53 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		54ACA4FE2AB5AA1500478B53 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
 		54AEB6382AB40D16000783B9 /* AirSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54AEB63B2AB40D16000783B9 /* AirSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirSenseApp.swift; sourceTree = "<group>"; };
 		54AEB63D2AB40D16000783B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				54ACA4F82AB5A14500478B53 /* Country.swift */,
 				54ACA4FA2AB5A28E00478B53 /* State.swift */,
 				54ACA4FC2AB5A3AB00478B53 /* City.swift */,
+				54ACA4FE2AB5AA1500478B53 /* CityData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				54ACA4EA2AB54C7100478B53 /* SearchView.swift in Sources */,
 				54ACA4F92AB5A14500478B53 /* Country.swift in Sources */,
 				54ACA4EC2AB54C7B00478B53 /* SearchViewModel.swift in Sources */,
+				54ACA4FF2AB5AA1500478B53 /* CityData.swift in Sources */,
 				54ACA4F12AB557DD00478B53 /* AirDataDetailsView.swift in Sources */,
 				54ACA4D82AB4188B00478B53 /* LocationManager.swift in Sources */,
 				54ACA4E72AB54C5700478B53 /* HomeView.swift in Sources */,

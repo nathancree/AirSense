@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct AidDataSearchService {
+struct AQSearchService {
     private let session: URLSession = .shared
     private let decoder: JSONDecoder = AirData.decoder
     
-    public func searchCountry(country: String) async throws -> [Country] {
+    public func searchCountries() async throws -> [Country] {
         print("search air data called")
         
         //make url
-        let urlString = URLComponents(string: "https://api.airvisual.com/v2/states?country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/countries?key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
         //create query item list
         
@@ -34,11 +34,11 @@ struct AidDataSearchService {
         
     }
     
-    public func searchState(country: String, state: String) async throws -> [State] {
+    public func searchStates(country: String) async throws -> [State] {
         print("search air data called")
         
         //make url
-        let urlString = URLComponents(string: "https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/states?country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
         //create query item list
         
@@ -57,11 +57,11 @@ struct AidDataSearchService {
         
     }
     
-    public func searchCity(country: String, state: String, city: String) async throws -> City {
+    public func searchCities(country: String, state: String) async throws -> [City] {
         print("search air data called")
         
         //make url
-        let urlString = URLComponents(string: "https://api.airvisual.com/v2/city?city=\(city)&state=\(state)&country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
         //create query item list
         
@@ -74,6 +74,30 @@ struct AidDataSearchService {
         
         //decode name from 'Data' type using our `JSONDecoder`
         let response = try decoder.decode(CityResponse.self, from: data)
+        
+        //return decoded name
+        return response.city
+        
+    }
+    
+    public func getCityData(country: String, state: String, city: String) async throws -> CityData {
+        print("search air data called")
+        
+        //make url
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/city?city=\(city)&state=\(state)&country=\(country)&key=1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+            
+        
+        //create query item list
+        
+        //add query list to existing url
+        guard let url = urlString?.url else { fatalError("Invalid URL") }
+        
+        
+        //begin fetching the data and wait for the response to come back
+        let (data, _) = try await session.data(from: url)
+        
+        //decode name from 'Data' type using our `JSONDecoder`
+        let response = try decoder.decode(CityDataResponse.self, from: data)
         
         //return decoded name
         return response.location

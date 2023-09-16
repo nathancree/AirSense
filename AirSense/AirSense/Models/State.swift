@@ -14,5 +14,5 @@ struct StateResponse: Codable {
 
 // MARK: - State
 struct State: Codable {
-    let city: String
+    let name: String
 }
