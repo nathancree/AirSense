@@ -29,7 +29,7 @@ struct AirDataDetailsView: View {
                         VStack {
                             Text("AQI")
                                 .font(.title2)
-                            Text("\(airDetailsVm.airData.aquis)")
+                            Text("\(airDetailsVm.airData.aqius)")
                                 .fontWeight(.bold)
                                 .font(.system(size: 125))
                             
@@ -88,6 +88,7 @@ struct AirDataDetailsView: View {
 
 struct AirDataDetailsView_Previews: PreviewProvider {
     static var previews: some View {
+        #warning("change from temp")
         let airDetailsVm = AirDataDetailsViewModel(airData: AirDataTEMP.example)
         AirDataDetailsView(airDetailsVm: airDetailsVm)
     }

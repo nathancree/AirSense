@@ -41,15 +41,16 @@ struct ContentView: View {
         //            }
         //            Text("Select an item")
         //        }
-        VStack {
-            Text("Air Quality App")
-            Button ("Get Air Quality") {
-                tempvm.getAirData();
-            }
-            
-            Text(tempvm.adata.city ?? "gerba gerba")
-            
-        }
+//        VStack {
+//            Text("Air Quality App")
+//            Button ("Get Air Quality") {
+//                tempvm.getAirData();
+//            }
+//
+//            Text(tempvm.adata.city ?? "gerba gerba")
+//
+//        }
+        Text("ContentView")
     }
     
     //    private func addItem() {

@@ -16,19 +16,19 @@ class AirDataDetailsViewModel: ObservableObject {
 #warning("change from TEMP")
     init(airData: AirDataTEMP) {
         self.airData = airData
-        if airData.aquis <= 50 {
+        if airData.aqius <= 50 {
             self.backgroundColor = Color("GoodAQI")
             self.airQualityMessage = "GOOD"
-        } else if airData.aquis <= 100 {
+        } else if airData.aqius <= 100 {
             self.backgroundColor = Color("ModerateAQI")
             self.airQualityMessage = "MODERATE"
-        } else if airData.aquis <= 150 {
+        } else if airData.aqius <= 150 {
             self.backgroundColor = Color("SlightlyUnhealthyAQI")
             self.airQualityMessage = "SLIGHTLY UNHEALTHY"
-        } else if airData.aquis <= 200 {
+        } else if airData.aqius <= 200 {
             self.backgroundColor = Color("UnhealthyAQI")
             self.airQualityMessage = "UNHEALTHY"
-        } else if airData.aquis <= 300 {
+        } else if airData.aqius <= 300 {
             self.backgroundColor = Color("VeryUnhealthyAQI")
             self.airQualityMessage = "VERY UNHEALTHY"
         } else {

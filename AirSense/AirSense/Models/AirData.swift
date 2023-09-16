@@ -13,6 +13,7 @@ import Foundation
 //   let welcome = try? JSONDecoder().decode(Welcome.self, from: jsonData)
 
 import Foundation
+import SwiftUI
 
 // MARK: - Welcome
 struct Response: Codable {
@@ -21,11 +22,12 @@ struct Response: Codable {
 }
 
 // MARK: - DataClass
-struct AirData: Codable {
+struct AirData: Codable, Identifiable {
+    let id = UUID()
     let city, state, country: String?
     let location: Location?
     let forecasts: [Forecast]?
-    let current: Current?
+    let current: Current
     let history: History?
 }
 
@@ -99,102 +101,3 @@ extension AirData {
         return decoder
     }
 }
-
-
-
-
-
-////struct AirData: Codable, Identifiable {
-////    let id = UUID()
-////}
-//
-//// MARK: - Welcome
-//struct Response: Codable {
-////    let status: String
-//    let data: AirData
-//}
-//
-//// MARK: - DataClass
-//struct AirData: Codable {
-//    let city, state, country: String
-//    let location: Location?
-//    let forecasts: [Forecast]?
-//    let current: Current?
-//    let history: History?
-//}
-//
-//// MARK: - Current
-//struct Current: Codable {
-//    let weather: Weather
-//    let pollution: Pollution
-//}
-//
-//// MARK: - Pollution
-//struct Pollution: Codable {
-//    let ts: String
-//    let aqius: Int
-//    let mainus: Main
-//    let aqicn: Int
-//    let maincn: Main
-//    let p2: Co
-//    let p1: Co?
-//    let o3, n2: Co
-//    let s2: Co?
-//    let co: Co
-//}
-//
-//// MARK: - Co
-//struct Co: Codable {
-//    let conc: Double
-//    let aqius, aqicn: Int
-//}
-//
-//enum Main: String, Codable {
-//    case o3 = "o3"
-//    case p1 = "p1"
-//    case p2 = "p2"
-//}
-//
-//// MARK: - Weather
-//struct Weather: Codable {
-//    let ts: String
-//    let tp, pr, hu, ws: Double //Int
-//    let wd: Int?
-//    let ic: String
-//}
-//
-//// MARK: - Forecast
-//struct Forecast: Codable {
-//    let ts: String
-//    let aqius, aqicn: Int
-//    let tp, tpMin, pr, hu: Int?
-//    let ws, wd: Int?
-//    let ic: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case ts, aqius, aqicn, tp
-//        case tpMin = "tp_min"
-//        case pr, hu, ws, wd, ic
-//    }
-//}
-//
-//// MARK: - History
-//struct History: Codable {
-//    let weather: [Weather]
-//    let pollution: [Pollution]
-//}
-//
-//// MARK: - Location
-//struct Location: Codable {
-//    let type: String
-//    let coordinates: [Double]
-//}
-//
-
-//extension AirData {
-//    static var decoder: JSONDecoder {
-//        let decoder = JSONDecoder()
-//        decoder.dateDecodingStrategy = .iso8601
-//        return decoder
-//    }
-//}

@@ -9,11 +9,11 @@ import Foundation
 @MainActor
 class TempViewModel: ObservableObject {
     private let service = AirQualityService()
-    @Published public var adata: AirData = AirData(city: "", state: "", country: "", location: nil, forecasts: nil, current: nil, history: nil)
-    
-    private func setAirData(adata: AirData) {
-        self.adata = adata
-    }
+//    @Published public var adata: AirData = AirData(city: "", state: "", country: "", location: nil, forecasts: nil, current: nil, history: nil)
+//
+//    private func setAirData(adata: AirData) {
+//        self.adata = adata
+//    }
 }
 
 extension TempViewModel {
@@ -21,7 +21,7 @@ extension TempViewModel {
         Task {
             do {
                 let adata = try await service.getAirQuality()
-                setAirData(adata: adata)
+//                setAirData(adata: adata)
             } catch {
                 print("\(error)")
             }

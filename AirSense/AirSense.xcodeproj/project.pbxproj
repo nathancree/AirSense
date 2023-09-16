@@ -92,8 +92,8 @@
 		54ACA4E32AB54C3500478B53 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				54ACA4E42AB54C4E00478B53 /* HomeViewModel.swift */,
 				54ACA4E62AB54C5700478B53 /* HomeView.swift */,
+				54ACA4E42AB54C4E00478B53 /* HomeViewModel.swift */,
 				54ACA4ED2AB5570200478B53 /* HomeDetailView.swift */,
 			);
 			path = Home;
