@@ -54,12 +54,25 @@ struct HomeDetailSubview: View {
             ZStack {
                 vm.backgroundColor.ignoresSafeArea()
                 VStack{
-                    Text(vm.airData.city)
-                        .font(.title2)
-                        .fontWeight(.semibold)
                     HStack {
-                        Text(vm.airData.country)
-                        Text(vm.airData.state)
+                        NavigationLink {
+                            SearchView()
+                        } label: {
+                            Image(systemName: "magnifyingglass.circle.fill")
+                                .font(.system(size: 35))
+                        }
+                        .padding(.leading, 30)
+                        .padding(.trailing, 85)
+                        VStack {
+                            Text(vm.airData.city)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                            HStack {
+                                Text(vm.airData.country)
+                                Text(vm.airData.state)
+                            }
+                        }
+                        Spacer()
                     }
                     .padding(.bottom, 10)
                     ZStack {
