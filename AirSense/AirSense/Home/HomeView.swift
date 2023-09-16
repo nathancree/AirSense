@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var homevm = HomeViewModel()
+    @StateObject var homevm: HomeViewModel
     var body: some View {
         ZStack {
             HomeDetailSubview(vm: homevm)
+//            Button {
+//                print("button clicked")
+//                homevm.getAirData()
+//            } label: {
+//                Rectangle()
+//                    .foregroundColor(.black)
+//            }
         }
         .foregroundColor(.white)
         
@@ -21,9 +28,8 @@ struct HomeView: View {
     private var favoriteList: some View {
         ScrollView(showsIndicators: false) {
             ForEach(homevm.favAirData) { airData in
-                #warning("change from temp")
                 NavigationLink {
-                    AirDataDetailsView(airDetailsVm: AirDataDetailsViewModel(airData: AirDataTEMP.example))
+                    AirDataDetailsView(airDetailsVm: AirDataDetailsViewModel(airData: homevm.airData))
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -48,24 +54,26 @@ struct HomeView: View {
 }
 
 struct HomeDetailSubview: View {
-    let vm: HomeViewModel
+    @StateObject var vm: HomeViewModel
     var body: some View {
         NavigationStack {
             ZStack {
                 vm.getbackgroundColor(airData: vm.airData)
+//                Color(.black)
                     .ignoresSafeArea()
                 VStack{
-                    HStack {
-//                        NavigationLink {
-//                            SearchView()
-                        Button {
-                            vm.getAirData()
-                        } label: {
-                            Image(systemName: "magnifyingglass.circle.fill")
-                                .font(.system(size: 35))
+                    ZStack {
+                        HStack {
+                            NavigationLink {
+                                SearchView()
+                            } label: {
+                                Image(systemName: "magnifyingglass.circle.fill")
+                                    .font(.system(size: 35))
+                            }
+                            .padding(.leading, 30)
+                            .padding(.trailing, 85)
+                            Spacer()
                         }
-                        .padding(.leading, 30)
-                        .padding(.trailing, 85)
                         VStack {
                             Text(vm.airData.city ?? "")
                                 .font(.title2)
@@ -75,7 +83,6 @@ struct HomeDetailSubview: View {
                                 Text(vm.airData.state ?? "")
                             }
                         }
-                        Spacer()
                     }
                     .padding(.bottom, 10)
                     ZStack {
@@ -93,8 +100,7 @@ struct HomeDetailSubview: View {
                     
                     HStack {
                         NavigationLink {
-                            #warning("change from temp")
-                            AirDataDetailsView(airDetailsVm: AirDataDetailsViewModel(airData: AirDataTEMP.example))
+                            AirDataDetailsView(airDetailsVm: AirDataDetailsViewModel(airData: vm.airData))
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
@@ -138,12 +144,14 @@ struct HomeDetailSubview: View {
             }
         }
         .foregroundColor(.white)
+        .accentColor(.white)
     }
 }
 
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        let homevm = HomeViewModel()
+        HomeView(homevm: homevm)
     }
 }

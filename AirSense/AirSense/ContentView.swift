@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @StateObject var tempvm = TempViewModel()
+    @StateObject var vm = HomeViewModel()
     
     var body: some View {
-        Text("ContentView")
+        HomeView(homevm: vm)
     }
     
     struct ContentView_Previews: PreviewProvider {

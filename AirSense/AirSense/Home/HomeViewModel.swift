@@ -23,15 +23,12 @@ class HomeViewModel: ObservableObject {
     
     
     private let service = AirQualityService()
-//    @Published public var adata: AirData = AirData(city: "", state: "", country: "", location: nil, forecasts: nil, current: nil, history: nil)
     
     private func setAirData(adata: AirData) {
-//        self.adata = adata
+        self.airData = adata
     }
     
     @Published var airData: AirData = AirData.inital
-//    @Published var backgroundColor: Color
-//    @Published var airQualityMessage: String
 
     init() {
         getAirData()
@@ -64,17 +61,17 @@ extension HomeViewModel {
 extension HomeViewModel {
     func getbackgroundColor(airData: AirData) -> Color {
         if airData.current.pollution.aqius <= 50 {
-            return Color("GoodAQI")
+            return .green//.goodAQI
         } else if airData.current.pollution.aqius <= 100 {
-            return Color("ModerateAQI")
+            return .yellow//.moderateAQI
         } else if airData.current.pollution.aqius <= 150 {
-            return Color("SlightlyUnhealthyAQI")
+            return .orange//.sUnhealthyAQI
         } else if airData.current.pollution.aqius <= 200 {
-            return Color("UnhealthyAQI")
+            return .red//.unhealthyAQI
         } else if airData.current.pollution.aqius <= 300 {
-            return Color("VeryUnhealthyAQI")
+            return .purple//.vUnhealthyAQI
         } else {
-            return Color("HazardousAQI")
+            return .black//.hazardousAQI
         }
     }
     

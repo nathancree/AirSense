@@ -17,7 +17,7 @@ struct AirQualityService {
         print("Fetching air quality")
         
         //make url
-        let urlString = URLComponents(string: "http://api.airvisual.com/v2/nearest_city?key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
         //create query item list
         
@@ -31,6 +31,8 @@ struct AirQualityService {
         //decode name from 'Data' type using our `JSONDecoder`
         let response = try decoder.decode(Response.self, from: data)
         
+        print("done fetching")
+        print("\(response.data.current.pollution.aqius)")
         //return decoded name
         return response.data
     }

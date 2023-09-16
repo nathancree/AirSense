@@ -14,12 +14,12 @@ struct AirDataDetailsView: View {
             ZStack {
                 airDetailsVm.backgroundColor.ignoresSafeArea()
                 VStack{
-                    Text(airDetailsVm.airData.city)
+                    Text(airDetailsVm.airData.city ?? "")
                         .font(.title)
                         .fontWeight(.semibold)
                     HStack {
-                        Text(airDetailsVm.airData.country)
-                        Text(airDetailsVm.airData.state)
+                        Text(airDetailsVm.airData.country ?? "")
+                        Text(airDetailsVm.airData.state ?? "")
                     }
                     .padding(.bottom, 10)
                     ZStack {
@@ -29,7 +29,7 @@ struct AirDataDetailsView: View {
                         VStack {
                             Text("AQI")
                                 .font(.title2)
-                            Text("\(airDetailsVm.airData.aqius)")
+                            Text("\(Int(airDetailsVm.airData.current.pollution.aqius))")
                                 .fontWeight(.bold)
                                 .font(.system(size: 125))
                             
@@ -67,11 +67,11 @@ struct AirDataDetailsView: View {
                             HStack (spacing: 50){
                                 #warning("add flag and icon image")
                                 //country flag on the left
-                                Text("PRESSURE: \(airDetailsVm.airData.pr)")
+                                Text("PRESSURE: \(Int(airDetailsVm.airData.current.weather.pr))")
                                 //weather icon on the right
                                 VStack (alignment: .leading){
-                                    Text("TEMP: \(airDetailsVm.airData.tp)")
-                                    Text("HUMIDITY: \(airDetailsVm.airData.hu)")
+                                    Text("TEMP: \(Int(airDetailsVm.airData.current.weather.tp))")
+                                    Text("HUMIDITY: \(Int(airDetailsVm.airData.current.weather.hu))")
                                 }
                             }
                             
@@ -88,8 +88,7 @@ struct AirDataDetailsView: View {
 
 struct AirDataDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        #warning("change from temp")
-        let airDetailsVm = AirDataDetailsViewModel(airData: AirDataTEMP.example)
+        let airDetailsVm = AirDataDetailsViewModel(airData: AirData.inital)
         AirDataDetailsView(airDetailsVm: airDetailsVm)
     }
 }
