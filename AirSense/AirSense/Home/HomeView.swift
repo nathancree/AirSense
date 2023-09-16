@@ -12,13 +12,15 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             HomeDetailSubview(vm: homevm)
-//            Button {
-//                print("button clicked")
-//                homevm.getAirData()
-//            } label: {
-//                Rectangle()
-//                    .foregroundColor(.black)
-//            }
+            Button {
+                print("button clicked")
+                homevm.printFavData()
+            } label: {
+                Text("Click for favData info")
+                    .frame()
+                    .background(.black)
+                    .foregroundColor(.white)
+            }
         }
         .foregroundColor(.white)
         
@@ -45,7 +47,7 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .font(.title)
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     }
                 }
             }
@@ -65,7 +67,7 @@ struct HomeDetailSubview: View {
                     ZStack {
                         HStack {
                             NavigationLink {
-                                SearchView()
+                                SearchView(homevm: vm)
                             } label: {
                                 Image(systemName: "magnifyingglass.circle.fill")
                                     .font(.system(size: 35))

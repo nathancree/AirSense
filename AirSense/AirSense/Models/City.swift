@@ -7,19 +7,12 @@
 
 import Foundation
 
-struct CityResponse: Decodable {
+struct CityResponse: Codable {
     let status: String
-    let location: City
+    let data: [City]
 }
 
-struct City: Decodable {
+struct City: Codable, Identifiable {
+    let id = UUID()
     let city: String
-    let state: String
-    let country: String
-    let location: Coordinates
-}
-
-struct Coordinates: Decodable {
-    let type: String
-    let coordinates: [Double]
 }

@@ -77,10 +77,10 @@ struct AQSearchService {
         let (data, _) = try await session.data(from: url)
         
         //decode name from 'Data' type using our `JSONDecoder`
-        let response = try decoder.decode(CityResponse.self, from: data)
+        let Cities = try decoder.decode(CityResponse.self, from: data)
         
         //return decoded name
-        return response.city
+        return Cities.data
         
     }
     

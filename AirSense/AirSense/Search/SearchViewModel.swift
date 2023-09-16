@@ -8,6 +8,7 @@
 import Foundation
 @MainActor
 class SearchViewModel: ObservableObject {
+    
     private let searchService = AQSearchService()
     private let airDataService = AirQualityService()
     
@@ -18,7 +19,7 @@ class SearchViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var states: [States] = []
     @Published var cities: [City] = []
-    @Published var cityAirData: [AirData] = []
+    @Published var cityAirData: AirData = AirData.inital
     
     
     
@@ -35,7 +36,7 @@ class SearchViewModel: ObservableObject {
     }
     
     private func setAirData(airData: AirData) {
-        cityAirData = [airData]
+        cityAirData = airData
     }
 }
 
@@ -102,6 +103,15 @@ extension SearchViewModel {
         }
     }
     
+    func filterCities(text: String, country: String, state: String) -> [City] {
+            getCities(country: country, state: state)
+        if text.isEmpty {
+            return cities
+        } else {
+            return cities.filter { $0.city.localizedCaseInsensitiveContains(text) }
+        }
+    }
+    
     func getCityDetails(country: String, state: String, city: String) {
         Task {
             do {
@@ -109,6 +119,11 @@ extension SearchViewModel {
                 setAirData(airData: try await airDataService.getLatLongAirQuality(lat: cityData.location.coordinates[0], lon: cityData.location.coordinates[1]))
             }
         }
+    }
+    
+    func getAirDataFromCityData(country: String, state: String, city: String) -> AirData {
+        getCityDetails(country: country, state: state, city: city)
+        return cityAirData
     }
     
     //helper

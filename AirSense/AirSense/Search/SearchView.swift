@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject var searchvm = SearchViewModel()
+    @StateObject var homevm: HomeViewModel
     @State var countrySelected: Bool = false
     @State var stateSelected: Bool = false
     var body: some View {
@@ -29,11 +30,11 @@ struct SearchView: View {
                     }
                     .disabled(!countrySelected)
                     NavigationLink {
-                        Text("City List")
+                        CitySheetView(text: $searchvm.generalQuery, homevm: homevm, vm: searchvm)
                     } label: {
                         Text("City")
                     }
-                    .disabled(countrySelected && stateSelected)
+                    .disabled(!countrySelected && !stateSelected)
                 }
                 .fontWeight(.bold)
                 .font(.system(size: 50))
@@ -157,8 +158,60 @@ struct StateSheetView: View {
     }
 }
 
+struct CitySheetView: View {
+    @Binding var text: String
+    var homevm: HomeViewModel
+    var vm: SearchViewModel
+    @State var filteredCities: [City] = []
+    var body: some View {
+        VStack {
+            HStack {
+                Button {
+                    filteredCities = vm.filterCities(text: text, country: vm.countryQuery, state: vm.stateQuery)
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .padding(.leading)
+                }
+                TextField("", text: $text)
+                    .background(.white)
+                    .accentColor(.black)
+                    .foregroundColor(.black)
+                    .cornerRadius(20)
+                    .padding(.horizontal, 40)
+            }
+            .padding(.top)
+            
+            ScrollView(showsIndicators: false) {
+                ForEach(filteredCities) { city in
+                    Button {
+                        homevm.addLocation(vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city))
+                        text = ""
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 20)
+                            HStack {
+                                Text(city.city)
+                                    .foregroundColor(.black)
+                                    .padding(.leading, 30)
+                                Spacer()
+                            }
+                        }
+                    }
+                }
+            }
+            
+            Spacer()
+        }
+    }
+}
+
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(homevm: HomeViewModel())
     }
 }

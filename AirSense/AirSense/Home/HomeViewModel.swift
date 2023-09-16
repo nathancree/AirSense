@@ -113,4 +113,9 @@ extension HomeViewModel {
             }
         }
     }
+    
+    //debuggin
+    func printFavData() {
+        print(favAirData)
+    }
 }
