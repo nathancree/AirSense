@@ -215,7 +215,7 @@ struct CitySheetView: View {
 
 extension CitySheetView{
     @MainActor private func fetchAndUpdateCity(_ city: City) async {
-        let updatedAirData: AirData = vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city)
+        let updatedAirData: AirData = await vm.getAirDataFromCityData(country: vm.countryQuery, state: vm.stateQuery, city: city.city)
         await addToUserDefaults(updatedAirData)
         
     }

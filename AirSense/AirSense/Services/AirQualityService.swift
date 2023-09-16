@@ -39,7 +39,7 @@ struct AirQualityService {
     
     public func getLatLongAirQuality(lat: Double, lon: Double) async throws -> AirData {
         print("Fetching Lat/Long air quality")
-        
+        print("https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         //make url
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
