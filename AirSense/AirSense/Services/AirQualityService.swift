@@ -17,7 +17,6 @@ struct AirQualityService {
         print("Fetching air quality")
         
         //make url
-//        var urlString = URLComponents(string: "https:api.airvisual.com/v2/city?city=Los Angeles&state=California&country=USA&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/nearest_city?lat=35.910259&lon=-79.055473&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
     
         

@@ -12,6 +12,14 @@
 		54ACA4DE2AB41E9D00478B53 /* AirQualityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4DD2AB41E9D00478B53 /* AirQualityService.swift */; };
 		54ACA4E02AB420D000478B53 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4DF2AB420CF00478B53 /* AirData.swift */; };
 		54ACA4E22AB444ED00478B53 /* TempViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4E12AB444ED00478B53 /* TempViewModel.swift */; };
+		54ACA4E52AB54C4E00478B53 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4E42AB54C4E00478B53 /* HomeViewModel.swift */; };
+		54ACA4E72AB54C5700478B53 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4E62AB54C5700478B53 /* HomeView.swift */; };
+		54ACA4EA2AB54C7100478B53 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4E92AB54C7100478B53 /* SearchView.swift */; };
+		54ACA4EC2AB54C7B00478B53 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4EB2AB54C7B00478B53 /* SearchViewModel.swift */; };
+		54ACA4EE2AB5570200478B53 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4ED2AB5570200478B53 /* HomeDetailView.swift */; };
+		54ACA4F12AB557DD00478B53 /* AirDataDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F02AB557DD00478B53 /* AirDataDetailsView.swift */; };
+		54ACA4F32AB557EB00478B53 /* AirDataDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F22AB557EB00478B53 /* AirDataDetailsViewModel.swift */; };
+		54ACA4F52AB5593300478B53 /* AirDataTEMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */; };
 		54AEB63C2AB40D16000783B9 /* AirSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB63B2AB40D16000783B9 /* AirSenseApp.swift */; };
 		54AEB63E2AB40D16000783B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB63D2AB40D16000783B9 /* ContentView.swift */; };
 		54AEB6402AB40D1A000783B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54AEB63F2AB40D1A000783B9 /* Assets.xcassets */; };
@@ -26,6 +34,14 @@
 		54ACA4DD2AB41E9D00478B53 /* AirQualityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityService.swift; sourceTree = "<group>"; };
 		54ACA4DF2AB420CF00478B53 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		54ACA4E12AB444ED00478B53 /* TempViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewModel.swift; sourceTree = "<group>"; };
+		54ACA4E42AB54C4E00478B53 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		54ACA4E62AB54C5700478B53 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		54ACA4E92AB54C7100478B53 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		54ACA4EB2AB54C7B00478B53 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		54ACA4ED2AB5570200478B53 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
+		54ACA4F02AB557DD00478B53 /* AirDataDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataDetailsView.swift; sourceTree = "<group>"; };
+		54ACA4F22AB557EB00478B53 /* AirDataDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataDetailsViewModel.swift; sourceTree = "<group>"; };
+		54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataTEMP.swift; sourceTree = "<group>"; };
 		54AEB6382AB40D16000783B9 /* AirSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54AEB63B2AB40D16000783B9 /* AirSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirSenseApp.swift; sourceTree = "<group>"; };
 		54AEB63D2AB40D16000783B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				54ACA4DF2AB420CF00478B53 /* AirData.swift */,
+				54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -70,6 +87,34 @@
 				54ACA4DD2AB41E9D00478B53 /* AirQualityService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		54ACA4E32AB54C3500478B53 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				54ACA4E42AB54C4E00478B53 /* HomeViewModel.swift */,
+				54ACA4E62AB54C5700478B53 /* HomeView.swift */,
+				54ACA4ED2AB5570200478B53 /* HomeDetailView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		54ACA4E82AB54C5B00478B53 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				54ACA4E92AB54C7100478B53 /* SearchView.swift */,
+				54ACA4EB2AB54C7B00478B53 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		54ACA4EF2AB557A900478B53 /* AirData Details */ = {
+			isa = PBXGroup;
+			children = (
+				54ACA4F02AB557DD00478B53 /* AirDataDetailsView.swift */,
+				54ACA4F22AB557EB00478B53 /* AirDataDetailsViewModel.swift */,
+			);
+			path = "AirData Details";
 			sourceTree = "<group>";
 		};
 		54AEB62F2AB40D16000783B9 = {
@@ -93,6 +138,9 @@
 			children = (
 				54AEB63D2AB40D16000783B9 /* ContentView.swift */,
 				54ACA4E12AB444ED00478B53 /* TempViewModel.swift */,
+				54ACA4EF2AB557A900478B53 /* AirData Details */,
+				54ACA4E82AB54C5B00478B53 /* Search */,
+				54ACA4E32AB54C3500478B53 /* Home */,
 				54ACA4DC2AB41E3B00478B53 /* Services */,
 				54ACA4D62AB4187300478B53 /* Shared */,
 				54ACA4D52AB4139300478B53 /* Models */,
@@ -184,15 +232,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54ACA4F32AB557EB00478B53 /* AirDataDetailsViewModel.swift in Sources */,
 				54AEB6452AB40D1A000783B9 /* Persistence.swift in Sources */,
 				54ACA4DB2AB418C500478B53 /* LocationViewModel.swift in Sources */,
+				54ACA4EE2AB5570200478B53 /* HomeDetailView.swift in Sources */,
 				54AEB63E2AB40D16000783B9 /* ContentView.swift in Sources */,
+				54ACA4E52AB54C4E00478B53 /* HomeViewModel.swift in Sources */,
+				54ACA4EA2AB54C7100478B53 /* SearchView.swift in Sources */,
+				54ACA4EC2AB54C7B00478B53 /* SearchViewModel.swift in Sources */,
+				54ACA4F12AB557DD00478B53 /* AirDataDetailsView.swift in Sources */,
 				54ACA4D82AB4188B00478B53 /* LocationManager.swift in Sources */,
+				54ACA4E72AB54C5700478B53 /* HomeView.swift in Sources */,
 				54ACA4E22AB444ED00478B53 /* TempViewModel.swift in Sources */,
 				54ACA4DE2AB41E9D00478B53 /* AirQualityService.swift in Sources */,
 				54AEB63C2AB40D16000783B9 /* AirSenseApp.swift in Sources */,
 				54ACA4E02AB420D000478B53 /* AirData.swift in Sources */,
 				54AEB6482AB40D1A000783B9 /* AirSense.xcdatamodeld in Sources */,
+				54ACA4F52AB5593300478B53 /* AirDataTEMP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
