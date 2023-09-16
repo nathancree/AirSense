@@ -63,7 +63,7 @@ struct AQSearchService {
     
     public func searchCities(country: String, state: String) async throws -> [City] {
         print("search cities called")
-        print("https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        
         //make url
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/cities?state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
         
@@ -84,9 +84,9 @@ struct AQSearchService {
         
     }
     
-    public func getCityData(country: String, state: String, city: String) async throws -> AirData {//CityData {
+    public func getCityData(country: String, state: String, city: String) async throws -> CityData { //AirData {
         print("search air data called")
-        print("https://api.airvisual.com/v2/city?city=\(city)&state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
+        
         //make url
         let urlString = URLComponents(string: "https://api.airvisual.com/v2/city?city=\(city)&state=\(state)&country=\(country)&key=f1a55c04-3c86-49be-ac7b-0c6fdce8c093")
             
@@ -101,7 +101,7 @@ struct AQSearchService {
         let (data, _) = try await session.data(from: url)
         
         //decode name from 'Data' type using our `JSONDecoder`
-        let response = try decoder.decode(Response.self, from: data)//CityDataResponse.self, from: data)
+        let response = try decoder.decode(CityDataResponse.self, from: data)
         
         //return decoded name
         return response.data

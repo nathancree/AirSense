@@ -115,9 +115,9 @@ extension SearchViewModel {
     func getCityDetails(country: String, state: String, city: String) async {
         Task {
             do {
-                async let cityData = try await searchService.getCityData(country: country, state: state, city: city)
-//                async let airQuality = airDataService.getLatLongAirQuality(lat: cityData.location.coordinates[0], lon: cityData.location.coordinates[1])
-                await setAirData(airData: try await cityData)//airQuality)
+                let cityData = try await searchService.getCityData(country: country, state: state, city: city)
+                async let airQuality = airDataService.getLatLongAirQuality(lat: cityData.location.coordinates[0], lon: cityData.location.coordinates[1])
+                setAirData(airData: try await airQuality)
                 print("done getting and setting city data")
             } catch {
                 print("\(error)")
