@@ -12,20 +12,6 @@ import SwiftUI
 struct Response: Codable {
     let status: String
     let data: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
-//    let results: AirData
 }
 
 // MARK: - DataClass

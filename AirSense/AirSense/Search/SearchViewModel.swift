@@ -10,16 +10,23 @@ import Foundation
 class SearchViewModel: ObservableObject {
     private let searchService = AQSearchService()
     private let airDataService = AirQualityService()
+    
+    @Published var generalQuery: String = ""
+    @Published var countryQuery: String = ""
+    @Published var stateQuery: String = ""
+    
     @Published var countries: [Country] = []
-    @Published var states: [State] = []
+    @Published var states: [States] = []
     @Published var cities: [City] = []
     @Published var cityAirData: [AirData] = []
+    
+    
     
     private func setCountries(countries: [Country]) {
         self.countries = countries
     }
     
-    private func setStates(states: [State]) {
+    private func setStates(states: [States]) {
         self.states = states
     }
     
@@ -45,11 +52,24 @@ extension SearchViewModel {
         }
     }
     
-    func getStates(country: Country) {
+    func filterCountries(text: String) -> [Country] {
+            getCountries()
+        if text.isEmpty {
+            return countries
+        } else {
+            return countries.filter { $0.country.localizedCaseInsensitiveContains(text) }
+        }
+    }
+    
+    func setCountryQuery(text: String) {
+        self.countryQuery = text
+    }
+    
+    func getStates(country: String) {
         Task {
             do {
                 print("getStates called")
-                let states = try await searchService.searchStates(country: country.name)
+                let states = try await searchService.searchStates(country: country)
                 setStates(states: states)
             } catch {
                 print("\(error)")
@@ -57,11 +77,24 @@ extension SearchViewModel {
         }
     }
     
-    func getCities(country: Country, state: State) {
+    func filterStates(text: String, country: String) -> [States] {
+            getStates(country: country)
+        if text.isEmpty {
+            return states
+        } else {
+            return states.filter { $0.state.localizedCaseInsensitiveContains(text) }
+        }
+    }
+    
+    func setStateQuery(text: String) {
+        self.stateQuery = text
+    }
+    
+    func getCities(country: String, state: String) {
         Task {
             do {
                 print("getCities called")
-                let cities = try await searchService.searchCities(country: country.name, state: state.name)
+                let cities = try await searchService.searchCities(country: country, state: state)
                 setCities(cities: cities)
             } catch {
                 print("\(error)")
@@ -69,12 +102,18 @@ extension SearchViewModel {
         }
     }
     
-    func getCityDetails(country: Country, state: State, city: City) {
+    func getCityDetails(country: String, state: String, city: String) {
         Task {
             do {
-                let cityData = try await searchService.getCityData(country: country.name, state: state.name, city: city.name)
+                let cityData = try await searchService.getCityData(country: country, state: state, city: city)
                 setAirData(airData: try await airDataService.getLatLongAirQuality(lat: cityData.location.coordinates[0], lon: cityData.location.coordinates[1]))
             }
         }
+    }
+    
+    //helper
+    func printCountryAndState() {
+        print(countryQuery)
+        print(stateQuery)
     }
 }

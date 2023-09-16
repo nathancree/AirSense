@@ -22,7 +22,7 @@
 		54ACA4F52AB5593300478B53 /* AirDataTEMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */; };
 		54ACA4F72AB59D6B00478B53 /* AQSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F62AB59D6B00478B53 /* AQSearchService.swift */; };
 		54ACA4F92AB5A14500478B53 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4F82AB5A14500478B53 /* Country.swift */; };
-		54ACA4FB2AB5A28E00478B53 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FA2AB5A28E00478B53 /* State.swift */; };
+		54ACA4FB2AB5A28E00478B53 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FA2AB5A28E00478B53 /* States.swift */; };
 		54ACA4FD2AB5A3AB00478B53 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FC2AB5A3AB00478B53 /* City.swift */; };
 		54ACA4FF2AB5AA1500478B53 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACA4FE2AB5AA1500478B53 /* CityData.swift */; };
 		54AEB63C2AB40D16000783B9 /* AirSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEB63B2AB40D16000783B9 /* AirSenseApp.swift */; };
@@ -49,7 +49,7 @@
 		54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDataTEMP.swift; sourceTree = "<group>"; };
 		54ACA4F62AB59D6B00478B53 /* AQSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQSearchService.swift; sourceTree = "<group>"; };
 		54ACA4F82AB5A14500478B53 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		54ACA4FA2AB5A28E00478B53 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		54ACA4FA2AB5A28E00478B53 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		54ACA4FC2AB5A3AB00478B53 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		54ACA4FE2AB5AA1500478B53 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
 		54AEB6382AB40D16000783B9 /* AirSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +79,7 @@
 				54ACA4DF2AB420CF00478B53 /* AirData.swift */,
 				54ACA4F42AB5593300478B53 /* AirDataTEMP.swift */,
 				54ACA4F82AB5A14500478B53 /* Country.swift */,
-				54ACA4FA2AB5A28E00478B53 /* State.swift */,
+				54ACA4FA2AB5A28E00478B53 /* States.swift */,
 				54ACA4FC2AB5A3AB00478B53 /* City.swift */,
 				54ACA4FE2AB5AA1500478B53 /* CityData.swift */,
 			);
@@ -250,7 +250,7 @@
 				54ACA4F32AB557EB00478B53 /* AirDataDetailsViewModel.swift in Sources */,
 				54AEB6452AB40D1A000783B9 /* Persistence.swift in Sources */,
 				54ACA4DB2AB418C500478B53 /* LocationViewModel.swift in Sources */,
-				54ACA4FB2AB5A28E00478B53 /* State.swift in Sources */,
+				54ACA4FB2AB5A28E00478B53 /* States.swift in Sources */,
 				54ACA4EE2AB5570200478B53 /* HomeDetailView.swift in Sources */,
 				54AEB63E2AB40D16000783B9 /* ContentView.swift in Sources */,
 				54ACA4E52AB54C4E00478B53 /* HomeViewModel.swift in Sources */,

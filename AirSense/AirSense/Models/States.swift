@@ -9,10 +9,11 @@ import Foundation
 
 struct StateResponse: Codable {
     let status: String
-    let state: [State]
+    let data: [States]
 }
 
 // MARK: - State
-struct State: Codable {
-    let name: String
+struct States: Codable, Identifiable {
+    let id = UUID()
+    let state: String
 }
